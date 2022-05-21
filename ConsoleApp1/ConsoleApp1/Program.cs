@@ -19,24 +19,34 @@ namespace ConsoleApp1
                 switch (input)
                 {
                     case "sum" :
-
-                        for (int i = 0; i < numbers.Count; i++)
-                        {
-                            sum += numbers[i];
-                        }
-
-                        Console.WriteLine($"Сумма: {sum}");
-                        sum = 0;
+                        Sum(numbers,ref sum);
                         break;
                     case "exit":
                         Console.WriteLine("Выход");
                         break;
                     default:
-                        int number = Convert.ToInt32(input);
-                        numbers.Add(number);
+                        AddNumbers(ref numbers, input);
                         break;
                 }
             }
+        }
+
+        static void Sum(List<int> numbers,ref int sum)
+        {
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                sum += numbers[i];
+            }
+
+            Console.WriteLine($"Сумма: {sum}");
+            sum = 0;
+        }
+
+        static void AddNumbers(ref List<int> numbers,string input)
+        {
+            int number;
+            int.TryParse(input, out number);
+            numbers.Add(number);
         }
     }
 }
