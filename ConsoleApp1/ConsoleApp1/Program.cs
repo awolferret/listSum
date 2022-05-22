@@ -8,8 +8,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             List<int> numbers = new List<int>();
-            var input = " ";
-            int sum = 0;
+            string input = " ";
 
             while (input != "exit")
             {
@@ -19,7 +18,7 @@ namespace ConsoleApp1
                 switch (input)
                 {
                     case "sum" :
-                        Sum(numbers,ref sum);
+                        Sum(numbers);
                         break;
                     case "exit":
                         Console.WriteLine("Выход");
@@ -31,8 +30,10 @@ namespace ConsoleApp1
             }
         }
 
-        static void Sum(List<int> numbers,ref int sum)
+        static void Sum(List<int> numbers)
         {
+            int sum = 0;
+
             for (int i = 0; i < numbers.Count; i++)
             {
                 sum += numbers[i];
