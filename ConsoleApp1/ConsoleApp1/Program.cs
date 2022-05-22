@@ -18,19 +18,19 @@ namespace ConsoleApp1
                 switch (input)
                 {
                     case "sum" :
-                        Sum(numbers);
+                        ShowSum(numbers);
                         break;
                     case "exit":
                         Console.WriteLine("Выход");
                         break;
                     default:
-                        AddNumbers(ref numbers, input);
+                        AddNumber(numbers, input);
                         break;
                 }
             }
         }
 
-        static void Sum(List<int> numbers)
+        static void ShowSum(List<int> numbers)
         {
             int sum = 0;
 
@@ -40,14 +40,20 @@ namespace ConsoleApp1
             }
 
             Console.WriteLine($"Сумма: {sum}");
-            sum = 0;
         }
 
-        static void AddNumbers(ref List<int> numbers,string input)
+        static void AddNumber(List<int> numbers,string input)
         {
             int number;
-            int.TryParse(input, out number);
-            numbers.Add(number);
+
+            if (int.TryParse(input, out number))
+            {
+                numbers.Add(number);
+            }
+            else
+            {
+                Console.WriteLine("Вы ввели не число");
+            }
         }
     }
 }
